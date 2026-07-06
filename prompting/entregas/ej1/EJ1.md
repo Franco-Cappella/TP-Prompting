@@ -191,9 +191,4 @@ El proceso de fragmentar la generación (solicitando primero de forma exclusiva 
 El mayor aprendizaje de esta práctica radica en comprender que el valor de la IA no está en delegar el pensamiento, sino en usarla como un acelerador de código estructurado bajo un patrón claro. Aunque la generación de las tres capas fue impecable, la IA no automatiza la visión global del sistema; por ejemplo, la integración final en src/server.js requirió mi intervención manual (// [YO]) para importar el nuevo controlador y montar la ruta en /api/materias. Además, este ejercicio sirvió como un excelente punto de partida para analizar el comportamiento de operadores lógicos y de coalescencia. Al revisar cómo se estructuran los vectores de valores con ?? '', queda claro el peligro de usar un operador || en escenarios donde un valor legítimo como false o 0 (muy comunes en campos de control o calificaciones) podría ser interpretado erróneamente como un valor ausente o falsy, rompiendo la integridad de los datos en la base.
 
 
-7. 🔗 Adjuntos
-[ ] Link/PDF de la conversación completa con la IA
-[ ] Commit(s) en GitHub: ____________
-[ ] Capturas / evidencias de verificación
-
 

@@ -1,21 +1,9 @@
-import Db from './db-pg.js';
-//IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-export default class MateriasRepository {
+import BaseRepository from './base-repository.js';
+
+export default class MateriasRepository extends BaseRepository {
     constructor() {
         console.log('Estoy en: MateriasRepository.constructor()');
-        this.db = new Db();
-    }
-
-    getAllAsync = async () => {
-        console.log(`MateriasRepository.getAllAsync()`);
-        const sql = `SELECT * FROM materias`;
-        return await this.db.queryAll(sql);
-    }
-
-    getByIdAsync = async (id) => {
-        console.log(`MateriasRepository.getByIdAsync(${id})`);
-        const sql = `SELECT * FROM materias WHERE id=$1`;
-        return await this.db.queryOne(sql, [id]);
+        super('materias');
     }
 
     createAsync = async (entity) => {
@@ -28,15 +16,7 @@ export default class MateriasRepository {
     updateAsync = async (entity) => {
         console.log(`MateriasRepository.updateAsync(${JSON.stringify(entity)})`);
         const sql = `UPDATE materias SET nombre = $2 WHERE id = $1`;
-        const values =  [   entity.id, 
-                            entity?.nombre ?? ''
-                        ];
+        const values = [entity.id, entity?.nombre ?? ''];
         return await this.db.queryRowCount(sql, values);
-    }
-
-    deleteByIdAsync = async (id) => {
-        console.log(`MateriasRepository.deleteByIdAsync(${id})`);
-        const sql = `DELETE FROM materias WHERE id=$1`;
-        return await this.db.queryRowCount(sql, [id]);
     }
 }
