@@ -2,7 +2,7 @@
 Copiá este archivo por cada ejercicio que entregues. Nombralo, por ejemplo, entregas/01-bitacora.md. Esta bitácora es parte de la nota. Un ejercicio sin bitácora no se corrige.
 
 Datos
-Alumno/a: Franco Cappella
+Alumno/a: Franco Cappella y Augusto Traverso
 Ejercicio: N° 1
 Fecha: 6/7/26
 Modelo de IA usado: Prompts: Gemini ; Agente de código(CLI): Opencode 
@@ -134,7 +134,7 @@ Qué me devolvió (resumen):
 Me devovlvio el repositorio de la tabla materias para que yo luego pueda pedirle que haga el servicio y controlador de esa misma tabla
 
 ¿Me sirvió tal cual, o tuve que corregir/repreguntar?
-Me sitio tal cual ya que replico lo mismo de los demas repositories del proyecto
+Me sirvió tal cual ya que replico lo mismo de los demas repositories del proyecto
 
 Prompt #2
 Lo que escribí:

@@ -1,5 +1,5 @@
 import Db from './db-pg.js';
-
+//IAAAAAAAA
 export default class BaseRepository {
     constructor(tabla) {
         console.log(`Estoy en: ${this.constructor.name}.constructor(tabla='${tabla}')`);
