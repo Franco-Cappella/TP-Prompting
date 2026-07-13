@@ -1,22 +1,6 @@
 import AlumnosRepository from '../repositories/alumnos-repository.js';
 import CursosService from './cursos-service.js';
-
-function calcularEdad(fechaNacimiento) {
-    if (!fechaNacimiento) return null;
-    const hoy = new Date();
-    const nacimiento = new Date(fechaNacimiento);
-    let edad = hoy.getFullYear() - nacimiento.getFullYear();
-    const mesDiff = hoy.getMonth() - nacimiento.getMonth();
-    if (mesDiff < 0 || (mesDiff === 0 && hoy.getDate() < nacimiento.getDate())) {
-        edad--;
-    }
-    return edad;
-}
-
-function agregarEdad(alumno) {
-    if (!alumno) return alumno;
-    return { ...alumno, edad: calcularEdad(alumno.fecha_nacimiento) };
-}
+import fechasHelper from '../helpers/fechas-helper.js';
 
 export default class AlumnosService {
     constructor() {
@@ -29,14 +13,14 @@ export default class AlumnosService {
         console.log(`AlumnosService.getAllAsync()`);
         const returnArray = await this.AlumnosRepository.getAllAsync();
         if (returnArray == null) return null;
-        return returnArray.map(alumno => agregarEdad(alumno));
+        return returnArray.map(alumno => fechasHelper.agregarEdad(alumno));
     }
 
     getByIdAsync = async (id) => {
         console.log(`AlumnosService.getByIdAsync(${id})`);
         const returnEntity = await this.AlumnosRepository.getByIdAsync(id);
         // Regla de negocio que agrega la edad.!!!
-        return agregarEdad(returnEntity);
+        return fechasHelper.agregarEdad(returnEntity);
     }
 
     createAsync = async (entity) => {

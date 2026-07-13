@@ -96,26 +96,30 @@ no necesite
 
 3. 🔧 Qué hizo la IA y qué hice yo
 Marcá esto también en el código con comentarios // [IA] y // [YO]. Acá resumilo:
-Archivo / función
-Lo generó la IA
-Lo modifiqué/escribí yo
-Por qué
-cursos-repository
-TODO
--
-Aplicó herencia
-materias-repository
-TODO
--
-Aplicó herencia
-alumnos-repository
-TODO
--
-Aplicó herencia
-base-repository
-TODO
--
-Hizo la base para heredar en los repositories
+1.Archivo / función
+2.Lo generó la IA
+3.Lo modifiqué/escribí yo
+4.Por qué
+
+1.cursos-repository
+2.TODO
+3.-
+4.Aplicó herencia
+
+1.materias-repository
+2.TODO
+3.-
+4.Aplicó herencia
+
+1.alumnos-repository
+2.TODO
+3.-
+4.Aplicó herencia
+
+1.base-repository
+2.TODO
+3.-
+4.Hizo la base para heredar en los repositories
 
 
 4. 🐛 Errores o cosas mal que detecté en la respuesta de la IA
@@ -142,13 +146,6 @@ La inyección segura de parámetros dinámicos (placeholders $1) para mitigar vu
 El resultado final es un refactor completamente transparente para las capas superiores (Services y Controllers). Logramos reducir drásticamente las líneas de código redundante en los repositorios hijos, dejándolos enfocados únicamente en sus responsabilidades específicas y reglas de negocio particulares (como las inserciones y actualizaciones de campos específicos).
 
 A nivel metodológico, la inteligencia artificial actuó como un acelerador de código boilerplate excelente. Al estructurar un prompt inicial con un rol bien definido (Senior Backend Developer), contexto técnico preciso y restricciones estrictas (sin ORMs, manteniendo la trazabilidad con console.log), la respuesta generada fue arquitectónicamente sólida y modular desde el primer intento. Esto demuestra que un prompt técnico bien diseñado minimiza el ciclo de iteración y permite enfocarse puramente en la verificación del comportamiento del sistema y en la calidad del diseño de software.
-
-
-
-7. 🔗 Adjuntos
-[ ] Link/PDF de la conversación completa con la IA
-[ ] Commit(s) en GitHub: ____________
-[ ] Capturas / evidencias de verificación
 
 
 

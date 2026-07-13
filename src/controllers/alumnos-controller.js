@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import AlumnosService from './../services/alumnos-service.js'
 import Alumno from './../entities/alumno.js'
+import respuesta from './../helpers/respuestas-helper.js'
 
 const router = Router();
 const currentService = new AlumnosService();
@@ -19,17 +20,16 @@ router.get('/test-insert', async (req, res) => {
 
         const newId = await currentService.createAsync(nuevoAlumno);
         if (newId > 0) {
-            res.status(StatusCodes.CREATED).json({
+            respuesta.responderCreated(res, {
                 message : `Se creó el alumno desde código con id: ${newId}`,
                 alumno  : nuevoAlumno,
                 newId   : newId
             });
         } else {
-            res.status(StatusCodes.BAD_REQUEST).json({ message: 'No se pudo crear el alumno.' });
+            respuesta.responderBadRequest(res, { message: 'No se pudo crear el alumno.' });
         }
     } catch (error) {
-        console.log(error);
-        res.status(StatusCodes.BAD_REQUEST).send(`Error: ${error.message}`);
+        respuesta.responderError(res, error, StatusCodes.BAD_REQUEST);
     }
 });
 
@@ -38,13 +38,12 @@ router.get('', async (req, res) => {
         console.log(`AlumnosController.get`);
         const returnArray = await currentService.getAllAsync();
         if (returnArray != null){
-            res.status(StatusCodes.OK).json(returnArray);
+            respuesta.responderOk(res, returnArray);
         } else {
-            res.status(StatusCodes.INTERNAL_SERVER_ERROR).send(`Error interno.`);
+            respuesta.responderInternalServerError(res, `Error interno.`);
         }
     } catch (error) {
-        console.log(error);
-        res.status(StatusCodes.INTERNAL_SERVER_ERROR).send(`Error: ${error.message}`);
+        respuesta.responderError(res, error, StatusCodes.INTERNAL_SERVER_ERROR);
     }
 });
 
@@ -53,13 +52,12 @@ router.get('/:id', async (req, res) => {
         let id = req.params.id;
         const returnEntity = await currentService.getByIdAsync(id);
         if (returnEntity != null){
-            res.status(StatusCodes.OK).json(returnEntity);
+            respuesta.responderOk(res, returnEntity);
         } else {
-            res.status(StatusCodes.NOT_FOUND).send(`No se encontro la entidad (id:${id}).`);
+            respuesta.responderNotFound(res, id);
         }
     } catch (error) {
-        console.log(error);
-        res.status(StatusCodes.INTERNAL_SERVER_ERROR).send(`Error: ${error.message}`);
+        respuesta.responderError(res, error, StatusCodes.INTERNAL_SERVER_ERROR);
     }
 });
 
@@ -68,13 +66,12 @@ router.post('', async (req, res) => {
         let entity = req.body;
         const newId = await currentService.createAsync(entity);
         if (newId > 0 ){
-            res.status(StatusCodes.CREATED).json(newId);
+            respuesta.responderCreated(res, newId);
         } else {
-            res.status(StatusCodes.BAD_REQUEST).json(null);
+            respuesta.responderBadRequest(res, null);
         }
     } catch (error) {
-        console.log(error);
-        res.status(StatusCodes.BAD_REQUEST).send(`Error: ${error.message}`);
+        respuesta.responderError(res, error, StatusCodes.BAD_REQUEST);
     }
 });
 
@@ -90,13 +87,12 @@ router.put('/:id', async (req, res) => {
         entity.id = id;
         const rowsAffected = await currentService.updateAsync(entity);
         if (rowsAffected != 0){
-            res.status(StatusCodes.OK).json(rowsAffected);
+            respuesta.responderOk(res, rowsAffected);
         } else {
-            res.status(StatusCodes.NOT_FOUND).send(`No se encontro la entidad (id:${id}).`);
+            respuesta.responderNotFound(res, id);
         }
     } catch (error) {
-        console.log(error);
-        res.status(StatusCodes.BAD_REQUEST).send(`Error: ${error.message}`);
+        respuesta.responderError(res, error, StatusCodes.BAD_REQUEST);
     }
 });
 
@@ -105,13 +101,12 @@ router.delete('/:id', async (req, res) => {
         let id = req.params.id;
         const rowCount = await currentService.deleteByIdAsync(id);
         if (rowCount != 0){
-            res.status(StatusCodes.OK).json(null);
+            respuesta.responderOk(res, null);
         } else {
-            res.status(StatusCodes.NOT_FOUND).send(`No se encontro la entidad (id:${id}).`);
+            respuesta.responderNotFound(res, id);
         }
     } catch (error) {
-        console.log(error);
-        res.status(StatusCodes.INTERNAL_SERVER_ERROR).send(`Error: ${error.message}`);
+        respuesta.responderError(res, error, StatusCodes.INTERNAL_SERVER_ERROR);
     }
 });
 
